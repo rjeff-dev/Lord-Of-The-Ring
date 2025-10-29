@@ -1,0 +1,133 @@
+@use 'variaveis';
+@use 'fonts';
+
+// ===========================
+// SEÇÃO DE PERSONAGENS (CHARS)
+// ===========================
+.chars {
+    padding: 80px 0;
+    text-align: center;
+    background-color: variaveis.$fundoPrinc;
+
+    // ======= título principal =======
+    &__title {
+        font-family: fonts.$fontTitle;
+        color: variaveis.$corTitulosSection;
+        font-size: 3rem;
+        margin-bottom: 40px;
+        text-shadow: 0 0 10px rgba(218, 165, 32, 0.6);
+    }
+
+    &__carousel {
+        display: flex;
+        align-items: center;
+        overflow: hidden; // esconde os cards fora da tela
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        transition: transform 0.5s ease-in-out; // suaviza o movimento
+
+        &__item {
+        flex: 0 0 100%; // ocupa 100% do container (1 card por vez)
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        padding: 20px;
+        box-sizing: border-box;
+
+        // fundo e borda do card
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid variaveis.$corDetalhes;
+        border-radius: 16px;
+        box-shadow: 0 0 20px rgba(218, 165, 32, 0.15);
+
+        img {
+            width: 40%;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 2px solid variaveis.$corDetalhes;
+        }
+
+        &__text {
+            width: 50%;
+            text-align: left;
+
+            h3 {
+            font-family: fonts.$fontSection;
+            font-size: 2rem;
+            color: variaveis.$corTitlePersona;
+            text-shadow: 0 0 10px rgba(218, 165, 32, 0.4);
+            margin-bottom: 12px;
+            }
+
+            p {
+            font-family: fonts.$fontSection;
+            color: variaveis.$corTexto;
+            font-size: 1.3rem;
+            line-height: 1.6;
+            }
+        }
+
+        &:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 25px rgba(218, 165, 32, 0.3);
+            transition: all 0.3s ease;
+        }
+        }
+    }
+
+    &__dots {
+        display: flex;
+        justify-content: center;
+        margin-top: 25px;
+        gap: 10px;
+
+        span {
+        width: 14px;
+        height: 14px;
+        background-color: rgba(218, 165, 32, 0.4);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+
+        &:hover {
+            background-color: variaveis.$corHover;
+            transform: scale(1.2);
+        }
+
+        &.active {
+            background-color: variaveis.$corTitulosPrincipal;
+            box-shadow: 0 0 10px variaveis.$corTitulosPrincipal;
+        }
+        }
+    }
+
+    // ======= responsividade =======
+    @media (max-width: 900px) {
+        &__carousel__item {
+        flex-direction: column;
+        gap: 20px;
+
+        img {
+            width: 80%;
+            height: 300px;
+        }
+
+        &__text {
+            width: 90%;
+            text-align: center;
+
+            h3 {
+            font-size: 1.6rem;
+            }
+
+            p {
+            font-size: 1.1rem;
+            }
+        }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+.historia{
+    h2{
+        text-align: center;
+    }
+
+    
+    &__container{
+        padding: 3vw;
+    }
+
+    &__list{
+        margin-top: 8px;
+        text-decoration: none;
+        list-style: none;
+
+        &__item{
+            align-items: center;
+            // padding: 20px;
+        }
+    }
+}

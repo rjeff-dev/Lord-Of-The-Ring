@@ -1,0 +1,63 @@
+@use 'variaveis';
+
+.header {
+    background-color: variaveis.$fundoPrinc;
+
+    &__container {
+        padding: 8px 36px;
+        display: flex;
+        align-items: center; 
+        justify-content: center; 
+        gap: 12px;
+        position: relative;
+    }
+
+    &__logo {
+        height: 60px;
+        width: auto; 
+        display: block;
+    }
+
+    h1 {
+        font-size: 2.8rem; 
+        margin: 0;
+        color: variaveis.$corTxtHero;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+    }
+
+    &__links {
+        position: absolute;
+        right: 36px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        gap: 16px;
+        list-style: none;
+
+        &__item {
+            color: variaveis.$corTxtHero;
+            text-decoration: none;
+            font-weight: 500;
+        }
+    }
+
+    .button{
+        color: variaveis.$corTitulosPrincipal;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1em;
+        transition: color 0.3s ease;
+        
+        &:hover {
+            color: variaveis.$corHover; // se tiver essa variável
+            text-shadow: 0 0 8px variaveis.$corHover;
+            transform: scale(1.05);
+        }
+    }
+
+    @media (max-width: 767px){
+        
+    }
+}

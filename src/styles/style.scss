@@ -1,0 +1,74 @@
+@use 'variaveis' as v;
+@use 'fonts';
+@use 'header';
+@use 'hero';
+@use 'historia';
+@use 'chars';
+@use 'trailer';
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0; 
+}
+
+body {
+    background-color: v.$fundoPrinc;
+}
+
+@mixin text($fontSize: 16px) {
+    font-size: $fontSize;
+    line-height: $fontSize + 10px;
+    color: v.$corTexto;
+}
+
+@mixin title($fontSize: 40px) {
+    @include text($fontSize); 
+    
+    color: v.$corTitulosSection;
+    font-family: 'Ringbearer', serif;
+    text-shadow: 0 0 8px rgba(v.$corTitulosSection, 0.3);
+}
+
+// ======= TÍTULOS =======
+.title--big {
+    @include title(48px); 
+    font-family: fonts.$fontTitle;
+    color: v.$corTitulosPrincipal;
+}
+
+.title {
+    @include title(40px);
+    font-family: fonts.$fontSection;
+    color: v.$corTitulosSection;
+}
+
+.title--small{
+    @include text(35px);
+    font-family: fonts.$fontSection;
+    color: v.$corTxtHero;
+    text-shadow: 2px 2px 8px #000, 0 0 12px #d4a017;
+    font-weight: bold;
+}
+
+.title--hero {
+    @include text(40px);
+    font-family: fonts.$fontSection;
+    color: v.$corTxtHero;
+    text-shadow: 2px 2px 8px #000, 0 0 12px #d4a017;
+    font-weight: bold;
+}
+
+// ======= TEXTOS =======
+.text--big{
+    @include text(30px);
+    font-family: fonts.$fontSection;
+    color: #b9920f;
+    text-shadow: 2px 2px 5px #000;
+}
+
+.text {
+    @include text(28px);
+    font-family: fonts.$fontSection;
+    color: v.$corTexto;
+}
