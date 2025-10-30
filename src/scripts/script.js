@@ -18,102 +18,106 @@ headerNav.querySelectorAll('a').forEach(link => {
 });
 
 
-
 // ================================
 // 🎠 CARROSSEL DOS PERSONAGENS
 // ================================
 
-const carousel = document.querySelector('.chars__carousel');
-const dotsContainer = document.getElementById('carouselDots');
-let autoSlideInterval;
-let autoSlideDelay = 5000; // tempo entre slides (ms)
+const carousel = document.getElementById("carousel");
+const cards = document.querySelectorAll(".chars__card");
+const prevBtn = document.getElementById("prev");
+const nextBtn = document.getElementById("next");
+const dotsContainer = document.getElementById("carouselDots");
+
 let currentIndex = 0;
+let autoSlideInterval;
+const autoSlideDelay = 5000; // tempo entre slides (ms)
 
-// Captura todos os cards do carrossel
-const cards = document.querySelectorAll('.chars__carousel__item');
-const totalCards = cards.length;
+// === Cria os pontinhos de navegação ===
+cards.forEach((_, index) => {
+    const dot = document.createElement("button");
+    dot.classList.add("dot");
+    if (index === 0) dot.classList.add("active");
+    dot.addEventListener("click", () => {
+        goToSlide(index);
+        resetAutoSlide();
+    });
+    dotsContainer.appendChild(dot);
+});
 
-// Cria os pontinhos de navegação
-if (dotsContainer && totalCards > 0) {
-    for (let i = 0; i < totalCards; i++) {
-        const dot = document.createElement('span');
-        dot.classList.add('dot');
-        if (i === 0) dot.classList.add('active');
-        dot.dataset.index = i;
-        dotsContainer.appendChild(dot);
+const dots = dotsContainer.querySelectorAll(".dot");
 
-        dot.addEventListener('click', () => {
-            currentIndex = i;
-            updateCarousel();
-            resetAutoSlide();
-        });
-    }
+// === Funções principais ===
+function updateDots() {
+    dots.forEach((dot, i) => dot.classList.toggle("active", i === currentIndex));
 }
 
-// Função que move o carrossel para o card ativo
-function updateCarousel() {
-    const offset = cards[currentIndex].offsetLeft - (carousel.offsetWidth / 2 - cards[currentIndex].offsetWidth / 2);
-    carousel.scrollTo({ left: offset, behavior: 'smooth' });
+function goToSlide(index) {
+    currentIndex = (index + cards.length) % cards.length;
+    const cardWidth = cards[0].offsetWidth + 16; // inclui gap entre cards
+    carousel.scrollTo({ left: cardWidth * currentIndex, behavior: "smooth" });
+    updateDots();
+}
 
-  // Atualiza os dots
-    document.querySelectorAll('.dot').forEach((dot, i) => {
-        dot.classList.toggle('active', i === currentIndex);
+function nextSlide() {
+    goToSlide(currentIndex + 1);
+}
+
+function prevSlide() {
+    goToSlide(currentIndex - 1);
+}
+
+// === Setas de navegação ===
+if (nextBtn && prevBtn) {
+    nextBtn.addEventListener("click", () => {
+        nextSlide();
+        resetAutoSlide();
+    });
+    prevBtn.addEventListener("click", () => {
+        prevSlide();
+        resetAutoSlide();
     });
 }
 
-// Avança para o próximo card
-function nextSlide() {
-    currentIndex = (currentIndex + 1) % totalCards;
-    updateCarousel();
-}
-
-// Volta para o card anterior
-function prevSlide() {
-    currentIndex = (currentIndex - 1 + totalCards) % totalCards;
-    updateCarousel();
-}
-
-// Inicia o slide automático
+// === Auto-play (passa automaticamente) ===
 function startAutoSlide() {
     autoSlideInterval = setInterval(nextSlide, autoSlideDelay);
 }
 
-// Reinicia o temporizador quando o usuário interage
 function resetAutoSlide() {
     clearInterval(autoSlideInterval);
     startAutoSlide();
 }
 
-// Interação manual com setas
-document.querySelectorAll('.chars__arrow').forEach(btn => {
-    btn.addEventListener('click', e => {
-        if (e.currentTarget.classList.contains('chars__arrow--left')) prevSlide();
-        else nextSlide();
-        resetAutoSlide();
-    });
-});
-
-// Pausa o slide automático enquanto o usuário arrasta
+// === Interações do usuário (mouse e toque) ===
 if (carousel) {
-    carousel.addEventListener('mousedown', () => clearInterval(autoSlideInterval));
-    carousel.addEventListener('touchstart', () => clearInterval(autoSlideInterval));
-    carousel.addEventListener('mouseup', startAutoSlide);
-    carousel.addEventListener('touchend', startAutoSlide);
+    carousel.addEventListener("mouseenter", () => clearInterval(autoSlideInterval));
+    carousel.addEventListener("mouseleave", startAutoSlide);
+
+  // Suporte a toque no mobile (swipe)
+    let startX = 0;
+    carousel.addEventListener("touchstart", (e) => {
+        startX = e.touches[0].clientX;
+        clearInterval(autoSlideInterval);
+    });
+    carousel.addEventListener("touchend", (e) => {
+        const endX = e.changedTouches[0].clientX;
+        if (startX - endX > 50) nextSlide(); // arrastar pra esquerda → próximo
+        else if (endX - startX > 50) prevSlide(); // arrastar pra direita → anterior
+        startAutoSlide();
+    });
 }
 
-// Inicia tudo
-if (carousel && totalCards > 0) {
-    updateCarousel();
+// === Inicializa o carrossel ===
+if (carousel && cards.length > 0) {
+    goToSlide(0);
     startAutoSlide();
 }
-
 
 
 // ================================
 // 🌫️ ANIMAÇÃO DE ENTRADA (Hero)
 // ================================
 
-// Efeito suave de fade-in no texto da Hero
 window.addEventListener('DOMContentLoaded', () => {
     const heroContent = document.querySelector('.hero__content');
     if (heroContent) {

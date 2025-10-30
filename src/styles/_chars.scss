@@ -1,131 +1,129 @@
-@use 'variaveis' as v;
+@use 'variaveis';
 @use 'global';
 
 .chars {
-    background: v.$fundoPrinc;
-    padding: v.$padding-section;
     position: relative;
-    overflow: hidden;
+    padding: 4rem 1rem;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
 
-    &__title {
-        @extend .title--hero;
-        text-align: center;
-        margin-bottom: 48px;
+    .chars__title {
+        font-size: 2.2rem;
+        margin-bottom: 2rem;
     }
 
-    /* === CARROSSEL === */
-    &__carousel {
+    .chars__carousel {
         display: flex;
-        align-items: stretch;
-        gap: 30px;
-        overflow: hidden;
-        scroll-behavior: smooth;
-        position: relative;
+        gap: 1.5rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        padding-bottom: 1rem;
     }
 
-    /* === CARD === */
-    &__card {
-        flex: 0 0 70vw;
-        max-width: 600px;
-        background: linear-gradient(180deg, #111 0%, #0c0c0c 100%);
-        border-radius: v.$radius-padrao;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 8px 26px rgba(0, 0, 0, 0.6);
+    .chars__carousel::-webkit-scrollbar {
+        display: none;
+    }
+
+    .chars__card {
+        flex: 0 0 calc(33.333% - 1rem);
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
         overflow: hidden;
-        text-align: center;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        scroll-snap-align: center;
+        transition: transform 0.3s ease;
+        cursor: pointer;
 
         &:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 0 30px rgba(v.$dourado, 0.4);
+            transform: scale(1.05);
+        }
+
+        .chars__image {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+        }
+
+        .chars__info {
+            padding: 1rem;
+        }
+
+        .chars__name {
+            font-size: 1.2rem;
+            color: variaveis.$dourado;
+            margin-bottom: 0.5rem;
+        }
+
+        .chars__desc {
+            font-size: 0.95rem;
+            color: #ddd;
+            line-height: 1.4;
         }
     }
 
-    /* === IMAGEM (ajuste de proporção) === */
-    &__image {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 3/4; // proporção vertical cinematográfica
-        object-fit: contain; // mantém proporção original
-        object-position: center;
-        display: block;
-        background-color: #000;
-        filter: brightness(0.95);
-        transition: filter 0.3s ease;
-
-        &:hover {
-        filter: brightness(1.08);
+    /* === Responsivo === */
+    @media (max-width: 1024px) {
+        .chars__card {
+            flex: 0 0 calc(50% - 1rem);
         }
     }
 
-    &__info {
-        padding: 1.5rem 1rem;
+    @media (max-width: 768px) {
+        .chars__card {
+            flex: 0 0 calc(70% - 1rem);
+        }
     }
 
-    &__name {
-        @extend .title--small;
-        color: v.$dourado;
-        margin-bottom: 10px;
+    @media (max-width: 480px) {
+        .chars__card {
+            flex: 0 0 85%;
+        }
     }
 
-    &__desc {
-        @extend .text;
-        color: #ddd;
-    }
-
-    /* === BOTÕES === */
-    &__arrow {
+    .chars__arrow {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
         background: rgba(0, 0, 0, 0.6);
         border: none;
-        color: v.$dourado;
+        color: variaveis.$dourado;
         font-size: 2rem;
-        padding: 8px 12px;
-        border-radius: 50%;
         cursor: pointer;
-        transition: all 0.3s ease;
-        z-index: 2;
+        padding: 0.4rem 1rem;
+        border-radius: 8px;
+        transition: background 0.3s ease;
 
         &:hover {
-        background: v.$dourado;
-        color: v.$preto;
+            background: rgba(255, 215, 0, 0.2);
         }
-
-        &--left { left: 10px; }
-        &--right { right: 10px; }
     }
 
-    /* === DOTS === */
-    &__dots {
+    .chars__arrow--left {
+        left: 1rem;
+    }
+
+    .chars__arrow--right {
+        right: 1rem;
+    }
+
+    .chars__dots {
+        margin-top: 1rem;
         display: flex;
         justify-content: center;
-        margin-top: 2rem;
-        gap: 8px;
+        gap: 0.5rem;
 
         button {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: rgba(v.$dourado, 0.3);
-        border: none;
-        transition: 0.3s;
-        cursor: pointer;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #555;
+            border: none;
+            cursor: pointer;
 
-        &.active {
-            background: v.$dourado;
+            &.active {
+                background: variaveis.$dourado;
+            }
         }
-        }
-    }
-
-    /* === RESPONSIVIDADE === */
-    @media (max-width: 900px) {
-        &__card { flex: 0 0 80vw; }
-    }
-
-    @media (max-width: 600px) {
-        &__card { flex: 0 0 90vw; }
-        &__arrow { display: none; }
     }
 }
