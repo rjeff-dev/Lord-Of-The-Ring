@@ -1,133 +1,131 @@
-@use 'variaveis';
-@use 'fonts';
+@use 'variaveis' as v;
+@use 'global';
 
-// ===========================
-// SEÇÃO DE PERSONAGENS (CHARS)
-// ===========================
 .chars {
-    padding: 80px 0;
-    text-align: center;
-    background-color: variaveis.$fundoPrinc;
+    background: v.$fundoPrinc;
+    padding: v.$padding-section;
+    position: relative;
+    overflow: hidden;
 
-    // ======= título principal =======
     &__title {
-        font-family: fonts.$fontTitle;
-        color: variaveis.$corTitulosSection;
-        font-size: 3rem;
-        margin-bottom: 40px;
-        text-shadow: 0 0 10px rgba(218, 165, 32, 0.6);
+        @extend .title--hero;
+        text-align: center;
+        margin-bottom: 48px;
     }
 
+    /* === CARROSSEL === */
     &__carousel {
         display: flex;
-        align-items: center;
-        overflow: hidden; // esconde os cards fora da tela
+        align-items: stretch;
+        gap: 30px;
+        overflow: hidden;
+        scroll-behavior: smooth;
         position: relative;
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-        transition: transform 0.5s ease-in-out; // suaviza o movimento
+    }
 
-        &__item {
-        flex: 0 0 100%; // ocupa 100% do container (1 card por vez)
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 40px;
-        padding: 20px;
-        box-sizing: border-box;
-
-        // fundo e borda do card
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid variaveis.$corDetalhes;
-        border-radius: 16px;
-        box-shadow: 0 0 20px rgba(218, 165, 32, 0.15);
-
-        img {
-            width: 40%;
-            height: 420px;
-            object-fit: cover;
-            border-radius: 12px;
-            border: 2px solid variaveis.$corDetalhes;
-        }
-
-        &__text {
-            width: 50%;
-            text-align: left;
-
-            h3 {
-            font-family: fonts.$fontSection;
-            font-size: 2rem;
-            color: variaveis.$corTitlePersona;
-            text-shadow: 0 0 10px rgba(218, 165, 32, 0.4);
-            margin-bottom: 12px;
-            }
-
-            p {
-            font-family: fonts.$fontSection;
-            color: variaveis.$corTexto;
-            font-size: 1.3rem;
-            line-height: 1.6;
-            }
-        }
+    /* === CARD === */
+    &__card {
+        flex: 0 0 70vw;
+        max-width: 600px;
+        background: linear-gradient(180deg, #111 0%, #0c0c0c 100%);
+        border-radius: v.$radius-padrao;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 8px 26px rgba(0, 0, 0, 0.6);
+        overflow: hidden;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
 
         &:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 25px rgba(218, 165, 32, 0.3);
-            transition: all 0.3s ease;
-        }
+        transform: translateY(-6px);
+        box-shadow: 0 0 30px rgba(v.$dourado, 0.4);
         }
     }
 
+    /* === IMAGEM (ajuste de proporção) === */
+    &__image {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3/4; // proporção vertical cinematográfica
+        object-fit: contain; // mantém proporção original
+        object-position: center;
+        display: block;
+        background-color: #000;
+        filter: brightness(0.95);
+        transition: filter 0.3s ease;
+
+        &:hover {
+        filter: brightness(1.08);
+        }
+    }
+
+    &__info {
+        padding: 1.5rem 1rem;
+    }
+
+    &__name {
+        @extend .title--small;
+        color: v.$dourado;
+        margin-bottom: 10px;
+    }
+
+    &__desc {
+        @extend .text;
+        color: #ddd;
+    }
+
+    /* === BOTÕES === */
+    &__arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.6);
+        border: none;
+        color: v.$dourado;
+        font-size: 2rem;
+        padding: 8px 12px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 2;
+
+        &:hover {
+        background: v.$dourado;
+        color: v.$preto;
+        }
+
+        &--left { left: 10px; }
+        &--right { right: 10px; }
+    }
+
+    /* === DOTS === */
     &__dots {
         display: flex;
         justify-content: center;
-        margin-top: 25px;
-        gap: 10px;
+        margin-top: 2rem;
+        gap: 8px;
 
-        span {
-        width: 14px;
-        height: 14px;
-        background-color: rgba(218, 165, 32, 0.4);
+        button {
+        width: 10px;
+        height: 10px;
         border-radius: 50%;
+        background: rgba(v.$dourado, 0.3);
+        border: none;
+        transition: 0.3s;
         cursor: pointer;
-        transition: background-color 0.3s ease, transform 0.3s ease;
-
-        &:hover {
-            background-color: variaveis.$corHover;
-            transform: scale(1.2);
-        }
 
         &.active {
-            background-color: variaveis.$corTitulosPrincipal;
-            box-shadow: 0 0 10px variaveis.$corTitulosPrincipal;
+            background: v.$dourado;
         }
         }
     }
 
-    // ======= responsividade =======
+    /* === RESPONSIVIDADE === */
     @media (max-width: 900px) {
-        &__carousel__item {
-        flex-direction: column;
-        gap: 20px;
+        &__card { flex: 0 0 80vw; }
+    }
 
-        img {
-            width: 80%;
-            height: 300px;
-        }
-
-        &__text {
-            width: 90%;
-            text-align: center;
-
-            h3 {
-            font-size: 1.6rem;
-            }
-
-            p {
-            font-size: 1.1rem;
-            }
-        }
-        }
+    @media (max-width: 600px) {
+        &__card { flex: 0 0 90vw; }
+        &__arrow { display: none; }
     }
 }

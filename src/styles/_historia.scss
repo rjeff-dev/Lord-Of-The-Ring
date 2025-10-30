@@ -1,21 +1,32 @@
-.historia{
-    h2{
-        text-align: center;
+@use 'variaveis';
+@use 'global';
+
+.historia {
+    background: linear-gradient(to bottom, #0b0b0b, #161616);
+    padding: variaveis.$padding-section;
+    position: relative;
+    color: variaveis.$texto;
+
+    &__container { max-width: 900px; margin: 0 auto; }
+
+    &__title { @extend .title--hero; color: variaveis.$dourado; margin-bottom: 40px; }
+
+    /* BEM + UL/LI com classes conforme solicitado */
+    &__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 24px; }
+    &__list__item { margin: 0; padding: 0; }
+
+    &__block {
+        @extend .text;
+        background: rgba(255,255,255,0.04);
+        border-radius: variaveis.$radius-padrao;
+        padding: 20px;
+        border: 1px solid rgba(255,255,255,0.04);
+        text-align: justify;
+        line-height: 1.7;
+        transition: background .18s ease, transform .18s ease;
     }
 
-    
-    &__container{
-        padding: 3vw;
-    }
+    &__block:hover { background: rgba(255,255,255,0.08); transform: translateY(-4px); }
 
-    &__list{
-        margin-top: 8px;
-        text-decoration: none;
-        list-style: none;
-
-        &__item{
-            align-items: center;
-            // padding: 20px;
-        }
-    }
+    &__text { @extend .text; }
 }

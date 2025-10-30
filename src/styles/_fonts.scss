@@ -1,16 +1,13 @@
-@font-face{
+@font-face {
     font-family: 'Ringbearer';
-    src: url(../../fonts/RINGM___.TTF)format('truetype');
+    src: url('../../fonts/RINGM___.TTF') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
-@font-face{
+@font-face {
     font-family: 'Cormorant Garamond';
-    src: url(../../fonts/CormorantGaramond-VariableFont_wght.ttf);
-    font-weight: 400;
+    src: url('../../fonts/CormorantGaramond-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
     font-style: normal;
 }
-
-$fontTitle: 'Ringbearer', serif;
-$fontSection: 'Cormorant Garamond', serif;

@@ -1,210 +1,222 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Senhor dos Aneis</title>
-    <link rel="stylesheet" href="./styles/style.scss">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>O Senhor dos Anéis</title>
+    <link rel="stylesheet" href="./styles/style.scss" />
 </head>
 <body>
     <header class="header">
         <div class="header__container">
-            <h1 class="title--big">
-                <img class="header__logo" src="images/logo-senhor-dos-aneis.png" alt="Logo Senho dos anéis">
-                <span>Senhor dos anéis</span>
-            </h1>
-            <div class="header__menu-toggle" id="menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul class="header__links">
-                <li class="text header__links__item"> 
-                    <a href="#historia" class="button button--primary">Explorar a história</a>
-                </li>
-                <li class="text header__links__item">
-                    <a href="#chars" class="button">Personagens</a>
-                </li>
-                <li class="text header__links__item">
-                    <a href="#trailer" class="button">Trailer</a>
-                </li>
-            </ul>           
+            <img src="./images/logo-senhor-dos-aneis.png" alt="Logo Senhor dos Anéis" class="header__logo" />
+
+            <h1 class="header__title">Senhor dos Anéis</h1>
+
+            <button class="header__menu-toggle" id="menu-toggle" aria-label="Abrir menu">
+            <span class="header__menu-icon"></span>
+            </button>
+
+            <nav class="header__nav" id="header-nav">
+            <ul class="header__nav-list">
+                <li class="header__nav-item"><a href="#inicio">Início</a></li>
+                <li class="header__nav-item"><a href="#historia">História</a></li>
+                <li class="header__nav-item"><a href="#chars">Personagens</a></li>
+                <li class="header__nav-item"><a href="#trailer">Trailer</a></li>
+            </ul>
+            </nav>
         </div>
     </header>
 
-    <section class="hero" id="hero">
-        <div class="container">
-            <h2 class="title--hero">Uma jornada épica pela Terra-Média</h2>
-            <p class="text text--hero">
-                O Um Anel desperta… e a sombra retorna à Terra-Média. Você está pronto?
+    <section class="hero" id="inicio">
+        <div class="hero__content">
+            <h2 class="hero__title">Uma jornada épica pela Terra-Média</h2>
+            <p class="hero__text">
+                O Um Anel desperta... e a sombra retorna à Terra-Média.  
+                Você está pronto para o chamado?
             </p>
+            <a href="#historia" class="hero__button">Explorar a história</a>
         </div>
     </section>
-    
-    <section class="historia" id="historia">
-        <div class="historia__container text">
-            <h2 class="title">A Saga do Anel</h2>
+
+    <!-- HISTÓRIA (BEM + UL/LI com classes) -->
+    <section class="historia" id="historia" role="region" aria-labelledby="historia-title">
+        <div class="historia__container container">
+            <h2 id="historia-title" class="historia__title title title--hero">A Saga do Anel</h2>
+
             <ul class="historia__list">
-                <li class="historia__list__item">
-                    <p class="text historia__list__item">
-                        A trilogia <strong>O Senhor dos Anéis</strong> se passa na lendária <strong>Terra-Média</strong>, 
-                        um mundo ameaçado pelo retorno do Senhor das Trevas, <strong>Sauron</strong>. Seu poder está ligado ao 
-                        <strong>Um Anel</strong> — uma joia forjada nas sombras para dominar todas as raças e mergulhar o mundo em trevas.
+                <li class="historia__list__item historia__block">
+                    <p class="historia__text text">
+                        A trilogia <strong>O Senhor dos Anéis</strong> se passa na lendária <strong>Terra-Média</strong>, um mundo ameaçado pelo retorno do Senhor das Trevas, <strong>Sauron</strong>. Seu poder está ligado ao <strong>Um Anel</strong> — uma joia forjada nas sombras para dominar todas as raças e mergulhar o mundo em trevas.
                     </p>
                 </li>
-                <li class="historia__list__item">
-                    <p class="text historia__list__item">
-                        Quando o jovem hobbit <strong>Frodo Bolseiro</strong> herda o Anel, ele descobre, com a ajuda do mago 
-                        <strong>Gandalf, o Cinzento</strong>, que a única forma de derrotar o mal é destruindo o Anel no fogo da 
-                        <strong>Montanha da Perdição</strong>, onde ele foi criado.
+
+                <li class="historia__list__item historia__block">
+                    <p class="historia__text text">
+                        Quando o jovem hobbit <strong>Frodo Bolseiro</strong> herda o Anel, ele descobre, com a ajuda do mago <strong>Gandalf, o Cinzento</strong>, que a única forma de derrotar o mal é destruindo o Anel no fogo da <strong>Montanha da Perdição</strong>, onde ele foi criado.
                     </p>
                 </li>
-                <li class="historia__list__item">
-                    <p class="text historia__list__item">
-                        Em uma jornada que desafia o impossível, nasce a <strong>Sociedade do Anel</strong> — um grupo formado por 
-                        homens, elfos, anões e hobbits, unidos por um propósito maior: proteger Frodo e garantir que o Anel nunca caia 
-                        nas mãos de Sauron novamente.
+
+                <li class="historia__list__item historia__block">
+                    <p class="historia__text text">
+                        Em uma jornada que desafia o impossível, nasce a <strong>Sociedade do Anel</strong> — um grupo formado por homens, elfos, anões e hobbits, unidos por um propósito maior: proteger Frodo e garantir que o Anel nunca caia nas mãos de Sauron novamente.
                     </p>
                 </li>
-                <li class="historia__list__item">
-                    <p class="text historia__list__item">
-                        Cada passo rumo a <strong>Mordor</strong> é marcado por batalhas, perdas e tentações. Mas também por amizade, 
-                        coragem e esperança — as forças que realmente sustentam o destino da Terra-Média.
+
+                <li class="historia__list__item historia__block">
+                    <p class="historia__text text">
+                        Cada passo rumo a <strong>Mordor</strong> é marcado por batalhas, perdas e tentações. Mas também por amizade, coragem e esperança — as forças que realmente sustentam o destino da Terra-Média.
                     </p>
                 </li>
-                <li class="historia__list__item">
-                    <p class="text historia__list__item">
-                        <em>“O Senhor dos Anéis”</em> é mais do que uma história de fantasia. É uma jornada sobre sacrifício, lealdade 
-                        e o poder da luz mesmo diante da mais profunda escuridão.
+
+                <li class="historia__list__item historia__block">
+                    <p class="historia__text text">
+                        <em>“O Senhor dos Anéis”</em> é mais do que uma história de fantasia. É uma jornada sobre sacrifício, lealdade e o poder da luz mesmo diante da mais profunda escuridão.
                     </p>
                 </li>
             </ul>
         </div>
     </section>
-    
-    <section class="chars" id="chars">
-        <!-- Título principal da seção -->
-        <h2 class="title chars__title">Sociedade do Anel</h2>
 
-        <!-- Container principal do carrossel -->
-        <div class="chars__carousel" id="carousel">
+    <!-- PERSONAGENS (todos os cards) -->
+    <section class="chars" id="chars" role="region" aria-labelledby="chars-title">
+    <h2 id="chars-title" class="chars__title title title--hero">Sociedade do Anel</h2>
 
-            <!-- ==== Cada personagem (CARD) ==== -->
-            <div class="chars__carousel__item">
-            <img src="./images/personagens/gandolf-perfil-cinzendo.jpeg" alt="Gandalf, o Cinzento">
+    <div class="chars__carousel" id="carousel" tabindex="0" aria-label="Carrossel de personagens">
+        <!-- 1 -->
+        <article class="chars__card" data-name="gandalf">
+            <img class="chars__image" src="./images/personagens/gandolf-perfil-cinzendo.jpeg" alt="Gandalf, o Cinzento">
             <div class="chars__info">
-                <h3 class="title--small">🧙‍♂️ Gandalf, o Cinzento</h3>
-                <p class="text">
-                Um andarilho misterioso que surge onde o perigo cresce. Carrega segredos antigos e um poder que poucos compreendem.
-                </p>
+                <h3 class="chars__name title title--small">🧙‍♂️ Gandalf, o Cinzento</h3>
+                <p class="chars__desc text">Um andarilho misterioso que surge onde o perigo cresce. Carrega segredos antigos e um poder que poucos compreendem.</p>
             </div>
-            </div>
+        </article>
 
-            <div class="chars__carousel__item">
-            <img src="./images/personagens/Aragorn.jpeg" alt="Aragorn, o Passolargo">
+        <!-- 2 -->
+        <article class="chars__card" data-name="aragorn">
+            <img class="chars__image" src="./images/personagens/Aragorn.jpeg" alt="Aragorn, o Passolargo">
             <div class="chars__info">
-                <h3 class="title--small">👑 Aragorn, o Passolargo</h3>
-                <p class="text">
-                Um viajante solitário que guarda um nome esquecido pelos ventos. Silencioso, leal e de olhar firme, carrega um fardo que nem todos poderiam suportar.
-                </p>
+                <h3 class="chars__name title title--small">👑 Aragorn, o Passolargo</h3>
+                <p class="chars__desc text">Um viajante solitário que guarda um nome esquecido pelos ventos. Silencioso, leal e de olhar firme, carrega um fardo que nem todos poderiam suportar.</p>
             </div>
-            </div>
+        </article>
 
-            <div class="chars__carousel__item">
-            <img src="./images/personagens/Legolas.jpeg" alt="Legolas, o Elfo da Floresta">
+        <!-- 3 -->
+        <article class="chars__card" data-name="legolas">
+            <img class="chars__image" src="./images/personagens/Legolas.jpeg" alt="Legolas, o Elfo da Floresta">
             <div class="chars__info">
-                <h3 class="title--small">🧝‍♂️ Legolas, o Elfo da Floresta</h3>
-                <p class="text">
-                Elegante e sereno, move-se como o vento entre árvores e sombras. Seu olhar atravessa distâncias e segredos. Poucos conhecem o verdadeiro alcance de suas flechas.
-                </p>
+                <h3 class="chars__name title title--small">🧝‍♂️ Legolas, o Elfo da Floresta</h3>
+                <p class="chars__desc text">Elegante e sereno, move-se como o vento entre árvores e sombras. Seu olhar atravessa distâncias e segredos. Poucos conhecem o verdadeiro alcance de suas flechas.</p>
             </div>
-            </div>
+        </article>
 
-            <div class="chars__carousel__item">
-            <img src="./images/personagens/Gimli.jpeg" alt="Gimli, filho de Glóin">
+        <!-- 4 -->
+        <article class="chars__card" data-name="gimli">
+            <img class="chars__image" src="./images/personagens/Gimli.jpeg" alt="Gimli, filho de Glóin">
             <div class="chars__info">
-                <h3 class="title--small">⛏️ Gimli, filho de Glóin</h3>
-                <p class="text">
-                Um guerreiro forjado em pedra e honra. Sua força é tão sólida quanto suas convicções, e seu machado fala por ele.
-                </p>
+                <h3 class="chars__name title title--small">⛏️ Gimli, filho de Glóin</h3>
+                <p class="chars__desc text">Um guerreiro forjado em pedra e honra. Sua força é tão sólida quanto suas convicções, e seu machado fala por ele.</p>
             </div>
-            </div>
+        </article>
 
-            <div class="chars__carousel__item">
-            <img src="./images/personagens/Frodo Bolseiro.jpeg" alt="Frodo Bolseiro">
+        <!-- 5 -->
+        <article class="chars__card" data-name="frodo">
+            <img class="chars__image" src="./images/personagens/Frodo_Bolseiro.jpeg" alt="Frodo Bolseiro">
             <div class="chars__info">
-                <h3 class="title--small">💍 Frodo Bolseiro</h3>
-                <p class="text">
-                Um hobbit comum de um lugar tranquilo, chamado para uma jornada que mudará tudo.
-                </p>
+                <h3 class="chars__name title title--small">💍 Frodo Bolseiro</h3>
+                <p class="chars__desc text">Um hobbit comum de um lugar tranquilo, chamado para uma jornada que mudará tudo.</p>
             </div>
-            </div>
+        </article>
 
-            <div class="chars__carousel__item">
-                <img src="./images/personagens/Samwise Gamgi.jpeg" alt="Samwise Gamgi">
-                <div class="chars__info">
-                    <h3 class="title--small">🌿 Samwise Gamgi</h3>
-                    <p class="text">
-                    Um coração simples, mas firme como a terra. Segue os passos do amigo com fé inabalável.
-                    </p>
-                </div>
+        <!-- 6 -->
+        <article class="chars__card" data-name="sam">
+            <img class="chars__image" src="./images/personagens/Samwise_Gamgi.jpeg" alt="Samwise Gamgi">
+            <div class="chars__info">
+                <h3 class="chars__name title title--small">🌿 Samwise Gamgi</h3>
+                <p class="chars__desc text">Um coração simples, mas firme como a terra. Segue os passos do amigo com fé inabalável.</p>
             </div>
+        </article>
 
-            <div class="chars__carousel__item">
-                <img src="./images/personagens/Meriadoc Brandebuque.jpg" alt="Meriadoc Brandebuque">
-                <div class="chars__info">
-                    <h3 class="title--small">🍃 Meriadoc Brandebuque</h3>
-                    <p class="text">
-                    Curioso e ousado, de risadas fáceis e mente afiada. Guarda dentro de si uma chama de bravura que o mundo ainda não viu brilhar.
-                    </p>
-                </div>
+        <!-- 7 -->
+        <article class="chars__card" data-name="merry">
+            <img class="chars__image" src="./images/personagens/Meriadoc_Brandebuque.jpg" alt="Meriadoc Brandebuque">
+            <div class="chars__info">
+                <h3 class="chars__name title title--small">🍃 Meriadoc Brandebuque</h3>
+                <p class="chars__desc text">Curioso e ousado, de risadas fáceis e mente afiada. Guarda dentro de si uma chama de bravura que o mundo ainda não viu brilhar.</p>
             </div>
+        </article>
 
-            <div class="chars__carousel__item">
-                <img src="./images/personagens/Peregrin Tûk.jpg" alt="Peregrin Tûk">
-                <div class="chars__info">
-                    <h3 class="title--small">🍂 Peregrin Tûk (Pippin)</h3>
-                    <p class="text">
-                    Jovem e inquieto, tem o dom de se meter onde não devia — e de descobrir o inesperado.
-                    </p>
-                </div>
+        <!-- 8 -->
+        <article class="chars__card" data-name="pippin">
+            <img class="chars__image" src="./images/personagens/Peregrin_Tûk.jpg" alt="Peregrin Tûk">
+            <div class="chars__info">
+                <h3 class="chars__name title title--small">🍂 Peregrin Tûk (Pippin)</h3>
+                <p class="chars__desc text">Jovem e inquieto, tem o dom de se meter onde não devia — e de descobrir o inesperado.</p>
             </div>
+        </article>
 
-            <div class="chars__carousel__item">
-                <img src="./images/personagens/Boromir, o Guerreiro de Gondor.jpeg" alt="Boromir">
-                <div class="chars__info">
-                    <h3 class="title--small">⚔️ Boromir, o Guerreiro de Gondor</h3>
-                    <p class="text">
-                    Orgulhoso defensor de seu povo, moldado pelo dever e honra.
-                    </p>
-                </div>
+        <!-- 9 -->
+        <article class="chars__card" data-name="boromir">
+            <img class="chars__image" src="./images/personagens/Boromir_o-Guerreiro-de-Gondor.jpeg" alt="Boromir">
+            <div class="chars__info">
+                <h3 class="chars__name title title--small">⚔️ Boromir, o Guerreiro de Gondor</h3>
+                <p class="chars__desc text">Orgulhoso defensor de seu povo, moldado pelo dever e honra.</p>
             </div>
+        </article>
 
-            <div class="chars__carousel__item">
-                <img src="./images/personagens/Gollum, Smeagol, Lord of the Rings, The Hobbit.jpeg" alt="Gollum">
-                <div class="chars__info">
-                    <h3 class="title--small">💀 Gollum</h3>
-                    <p class="text">
-                    Uma criatura dividida entre a escuridão e a lembrança do que já foi.
-                    </p>
-                </div>
+        <!-- 10 -->
+        <article class="chars__card" data-name="gollum">
+            <img class="chars__image" src="./images/personagens/Gollum-Smeagol.jpeg" alt="Gollum">
+            <div class="chars__info">
+                <h3 class="chars__name title title--small">💀 Gollum</h3>
+                <p class="chars__desc text">Uma criatura dividida entre a escuridão e a lembrança do que já foi.</p>
             </div>
-        </div>
-        <!-- Dots (os 3 pontinhos de navegação) -->
-        <div class="chars__dots" id="carouselDots"></div>
+        </article>
+
+        <!-- 11 - Saruman -->
+        <article class="chars__card chars__card--villain" data-name="saruman">
+            <img class="chars__image" src="./images/personagens/Saruman_o_Branco.jpeg" alt="Saruman, o Branco">
+            <div class="chars__info">
+                <h3 class="chars__name title title--small">🌀 Saruman, o Branco</h3>
+                <p class="chars__desc text">O mais sábio entre os magos, corrompido pela sede de poder. Sua voz é persuasiva, e seu coração, agora, serve às sombras. Um reflexo do que Gandalf poderia ter sido… se tivesse se perdido.</p>
+            </div>
+        </article>
+
+        <!-- 12 - Sauron -->
+        <article class="chars__card chars__card--villain" data-name="sauron">
+            <img class="chars__image" src="./images/personagens/Sauron_O_Senhor_do_Escuro.jpeg" alt="Sauron, o Senhor do Escuro">
+            <div class="chars__info">
+                <h3 class="chars__name title title--small">👁️ Sauron, o Senhor do Escuro</h3>
+                <p class="chars__desc text">Forjador do Um Anel. Mesmo sem corpo, sua vontade domina e corrompe. Ele não precisa ser visto — sua presença é sentida na própria sombra do mundo.</p>
+            </div>
+        </article>
+    </div>
+
+        <button class="chars__arrow chars__arrow--left" id="prev" aria-label="Anterior">&#10094;</button>
+        <button class="chars__arrow chars__arrow--right" id="next" aria-label="Próximo">&#10095;</button>
+
+        <div class="chars__dots" id="carouselDots" role="tablist"></div>
     </section>
 
-    <section id="trailer">
-        <div class="trailer">
-            <h2 class="text">Assista aos trailers</h2>
-            <div class="trailer__title">
-                <iframe src="https://www.youtube.com/embed/oPwvcWPh3LM" allowfullscreen></iframe>
-                <iframe src="https://www.youtube.com/embed/LbfMDwc4azU" allowfullscreen></iframe>
-                <iframe src="https://www.youtube.com/embed/LiKeQrChkTY" allowfullscreen></iframe>
+    <!-- TRAILER -->
+    <section class="trailer" id="trailer">
+        <div class="trailer__container container">
+            <h2 class="trailer__title title title--hero">Assista aos Trailers</h2>
+            <div class="trailer__grid">
+                <iframe src="https://www.youtube.com/embed/oPwvcWPh3LM" allowfullscreen title="Trailer 1"></iframe>
+                <iframe src="https://www.youtube.com/embed/LbfMDwc4azU" allowfullscreen title="Trailer 2"></iframe>
+                <iframe src="https://www.youtube.com/embed/LiKeQrChkTY" allowfullscreen title="Trailer 3"></iframe>
             </div>
         </div>
     </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer__container container">
+            <p class="footer__text text">© 2025 — Projeto “O Senhor dos Anéis”. Todos os direitos reservados.</p>
+        </div>
+    </footer>
 
     <script src="./scripts/script.js"></script>
 </body>
-</html> 
+</html>
